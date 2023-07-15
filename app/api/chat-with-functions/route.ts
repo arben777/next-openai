@@ -9,6 +9,8 @@ const config = new Configuration({
 const openai = new OpenAIApi(config)
 
 // IMPORTANT! Set the runtime to edge
+// Link to see how to add additional functions to this function calling feature, both client & server side
+// https://chat.openai.com/share/ba26d458-9396-46de-99b2-930d55d56048 
 export const runtime = 'edge'
 
 const functions: ChatCompletionFunctions[] = [
@@ -44,6 +46,7 @@ const functions: ChatCompletionFunctions[] = [
       required: ['code']
     }
   }
+   // ADD the google functions here in this functions array.
 ]
 
 export async function POST(req: Request) {
@@ -75,6 +78,7 @@ export async function POST(req: Request) {
           functions
         })
       }
+      //ADD the additional functions if statements here
     }
   })
 
